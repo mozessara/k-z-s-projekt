@@ -1,2 +1,2 @@
-# k-z-s-projekt
+# kozos-projekt
 programozzunk
