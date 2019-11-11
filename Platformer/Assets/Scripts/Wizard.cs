@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Wizard : BaseClass
 {
-    public class Wizard(){
-        className = "Wizard";
+    public Wizard(){
+        ClassName = "Wizard";
         Health = 5;
         Strength = 3;
         Intelligence = 8;
@@ -14,5 +14,7 @@ public class Wizard : BaseClass
         CanShoot = true;
     }
 
-    public void Hit(){}
+    public void Hit(){
+
+    }
 }
