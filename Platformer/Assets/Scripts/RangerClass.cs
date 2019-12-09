@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RangerClass : BaseClass
 {
+    private GameObject firepoint;
     public RangerClass(){
         ClassName = "Ranger";
         Health = 8;
@@ -13,7 +14,11 @@ public class RangerClass : BaseClass
         Damage = 5;
         CanShoot = true;
     }
-    public void Hit(){
-        
+    void start(){
+        firepoint = GameObject.Find("FirePoint");
+    }
+
+    public void Hit(ShootController prefab){
+        Instantiate(prefab, firepoint.transform.position, firepoint.transform.rotation);
     }
 }

@@ -4,13 +4,13 @@ public class ShootController : MonoBehaviour
 {
     public float bulletSpeed;
     private Rigidbody2D rb;
-    private PlayerController player;
+    private PlayerScript player;
     private bool flying = true;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = FindObjectOfType<PlayerController>();
+        player = FindObjectOfType<PlayerScript>();
     }
     private void FixedUpdate()
     {

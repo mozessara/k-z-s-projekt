@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Wizard : BaseClass
 {
+    private GameObject firepoint;
+
     public Wizard(){
         ClassName = "Wizard";
         Health = 5;
@@ -13,8 +15,11 @@ public class Wizard : BaseClass
         Damage = 6;
         CanShoot = true;
     }
+    void start(){
+        firepoint = GameObject.Find("FirePoint");
+    }
 
-    public void Hit(){
-
+    public void Hit(ShootController prefab){
+        Instantiate(prefab, firepoint.transform.position, firepoint.transform.rotation);
     }
 }

@@ -4,10 +4,10 @@ public class ScrollBackGround : MonoBehaviour
 {
     float scrollTime = 0;
     float scrollingSpeed = 0.05f;
-    PlayerController player;
+    PlayerScript player;
     private void Start()
     {
-        player = FindObjectOfType<PlayerController>();
+        player = FindObjectOfType<PlayerScript>();
     }
     private void Update()
     {

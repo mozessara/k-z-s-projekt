@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WarriorClass : BaseClass
 {
+    private Animator anim;
+
     public WarriorClass(){
         ClassName = "Warrior";
         Health = 10;
@@ -14,6 +16,13 @@ public class WarriorClass : BaseClass
         CanShoot = false;
     }
     public void Hit(){
-        
+        anim = GetComponentInChildren<Animator>();
+        anim.SetBool("attack", false);
+        StartCoroutine(HitSword());
+    }
+    IEnumerator HitSword(){
+        anim.SetBool("attack", true);
+        yield return new WaitForSeconds(0.2f);
+        anim.SetBool("attack", false);
     }
 }
