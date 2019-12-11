@@ -8113,10 +8113,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 808179597}
-  - component: {fileID: 808179598}
   - component: {fileID: 808179601}
   - component: {fileID: 808179600}
   - component: {fileID: 808179599}
+  - component: {fileID: 808179598}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -8157,6 +8157,19 @@ MonoBehaviour:
   movementSpeed: 20
   jumpForce: 400
   horizontalMove: 0
+  playerClass: player
+  playerHP: 0
+  playerStrength: 0
+  playerIntelligence: 0
+  playerSpeed: 0
+  playerDamage: 0
+  firePoint: {fileID: 0}
+  weapons: []
+  sword_prefab: {fileID: 100000, guid: d0c604913b6439644b9655ed464616d0, type: 3}
+  staff_prefab: {fileID: 100000, guid: f2efc234167a96c4286147dcd8cde689, type: 3}
+  bow_prefab: {fileID: 100000, guid: 88127502531659c42b510db3d24fcfb6, type: 3}
+  fireBall_prefab: {fileID: 0}
+  grenade_prefab: {fileID: 0}
 --- !u!50 &808179599
 Rigidbody2D:
   serializedVersion: 4

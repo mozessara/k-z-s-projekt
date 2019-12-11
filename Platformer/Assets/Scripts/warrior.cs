@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarriorClass : BaseClass
+public class warrior : BaseClass
 {
     private Animator anim;
 
-    public WarriorClass(){
+    public warrior(){
         ClassName = "Warrior";
         Health = 10;
         Strength = 9;

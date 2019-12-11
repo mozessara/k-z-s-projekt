@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject sword_prefab;
     public GameObject staff_prefab;
+    public GameObject bow_prefab;
     public ShootController fireBall_prefab;
     public ShootController grenade_prefab;
 
@@ -40,9 +41,9 @@ public class PlayerScript : MonoBehaviour
         if(Input.GetButtonDown("Jump")) jump = true;
 
         if(Input.GetButtonDown("Fire1")){
-            if(GetComponent<BaseClass>()) GetComponent<warrior>().Hit();
-            else if(GetComponent<BaseClass>()) GetComponent<Wizard>().Hit();
-            else if(GetComponent<BaseClass>()) GetComponent<RangerClass>().Hit();
+            if(GetComponent<warrior>()) GetComponent<warrior>().Hit();
+            else if(GetComponent<Wizard>()) GetComponent<Wizard>().Hit(fireBall_prefab);
+            else if(GetComponent<RangerClass>()) GetComponent<RangerClass>().Hit(grenade_prefab);
         }
     }
     public void WarriorClass(){
@@ -66,8 +67,10 @@ public class PlayerScript : MonoBehaviour
                 weapons.Remove(weapons[0]);
             }
             if(weapons.Count < 1){
-                weapons.Add();
-                //ITTTTTTTTTEN
+                weapons.Add(Instantiate(sword_prefab, transform, false));
+                weapons[0].transform.position = new Vector2(transform.position.x, transform.position.y - 0.5f);
+                weapons[0].gameObject.SetActive(true);
+
             }
             
         }
@@ -88,6 +91,17 @@ public class PlayerScript : MonoBehaviour
 
             firePoint.localEulerAngles = new Vector3(0, 0, 0);
 
+             if(weapons.Count == 1){
+                Destroy(weapons[0]);
+                weapons.Remove(weapons[0]);
+            }
+            if(weapons.Count < 1){
+                weapons.Add(Instantiate(staff_prefab, transform, false));
+                weapons[0].transform.position = new Vector2(transform.position.x, transform.position.y - 0.5f);
+                weapons[0].gameObject.SetActive(true);
+
+            }
+
         }
     }
     public void RangerClass(){
@@ -105,19 +119,30 @@ public class PlayerScript : MonoBehaviour
             playerDamage = klassz.Damage;
 
             firePoint.localEulerAngles = new Vector3(0, 0, 45);
+            if(weapons.Count == 1){
+                Destroy(weapons[0]);
+                weapons.Remove(weapons[0]);
+            }
+            if(weapons.Count < 1){
+                weapons.Add(Instantiate(bow_prefab, transform, false));
+                weapons[0].transform.position = new Vector2(transform.position.x, transform.position.y - 0.5f);
+                weapons[0].gameObject.SetActive(true);
 
+            }
         
         }
     }
     private void FixedUpdate(){
         Moving(horizontalMove, jump);
     }
-    void Moving(float movement, bool canJump){
+     void Moving(float movement, bool canjump)
+    {
         rb.velocity = new Vector2(movement * movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
-        
-        if(canJump && GetComponent<CircleCollider2D>().IsTouchingLayers()){
+
+        if (canjump && GetComponent<CircleCollider2D>().IsTouchingLayers())
+        {
             rb.AddForce(new Vector2(0, jumpForce));
-            jump = !canJump;
+            jump = !canjump;
         }
     }
     
